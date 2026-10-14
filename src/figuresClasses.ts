@@ -1,3 +1,5 @@
+type Color = 'red' | 'green' | 'blue';
+type Shape = `triangle` | `circle` | `rectangle`;
 export interface Figure {
   color: Color;
   shape: Shape;
@@ -6,9 +8,13 @@ export interface Figure {
 
 export class Triangle implements Figure {
   color: Color;
+
   shape: 'triangle';
+
   a: number;
+
   b: number;
+
   c: number;
 
   constructor(color: Color, a: number, b: number, c: number) {
@@ -36,9 +42,10 @@ export class Triangle implements Figure {
 }
 
 export class Circle implements Figure {
-
   color: Color;
+
   shape: 'circle';
+
   radius: number;
 
   constructor(color: Color, radius: number) {
@@ -55,19 +62,21 @@ export class Circle implements Figure {
     const area = Math.PI * this.radius ** 2;
 
     return Math.floor(area * 100) / 100;
-
   }
 }
 
 export class Rectangle implements Figure {
   color: Color;
+
   shape: 'rectangle';
+
   width: number;
+
   height: number;
 
   constructor(color: Color, width: number, height: number) {
-    if (width <= 0|| height <= 0) {
-       throw new Error('Width and height must be greater than 0');
+    if (width <= 0 || height <= 0) {
+      throw new Error('Width and height must be greater than 0');
     }
     this.color = color;
     this.shape = 'rectangle';
@@ -80,12 +89,8 @@ export class Rectangle implements Figure {
 
     return Math.floor(area * 100) / 100;
   }
-
 }
 
 export function getInfo(figure: Figure): string {
-  return `A ${figure.color} ${figure.shape} - ${ figure.getArea()}`;
+  return `A ${figure.color} ${figure.shape} - ${figure.getArea()}`;
 }
-
-type Color = 'red' | 'green' | 'blue';
-type Shape = `triangle` | `circle` | `rectangle`;
